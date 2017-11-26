@@ -4,7 +4,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class CacheManagerBuilder {
+public class SampleCacheManagerBuilder implements CacheManagerBuilder{
 
     public void build() {
         List<CachRepository>  cachRepositories = fetchDataFromDb();
