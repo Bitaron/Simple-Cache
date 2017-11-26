@@ -1,16 +1,18 @@
 package com.company;
 
 public class CacheManager {
-    public static BaseCacheObject<Domain> domainCacheObject;
-    public static BaseCacheObject<Domain2> domain2BaseCacheObject;
-
-    static {
-        init();
+    public CacheManagerBuilder cacheManagerBuilder;
+    private int lastUpdatedId;
+    
+    public CacheManager(CacheManagerBuilder cacheManagerBuilder) {
+        this.cacheManagerBuilder = cacheManagerBuilder;
     }
-
-    private static void init() {
-        domainCacheObject = new BaseCacheObject<>();
-        domain2BaseCacheObject = new BaseCacheObject<>();
-        new CacheManagerBuilder().build();
+    
+    public void init() {
+       lastUpdatedId = this.cacheManagerBuilder.init();
+    }
+    
+     public void update() {
+       lastUpdatedId = this.cacheManagerBuilder.update(lastUpdatedId);
     }
 }
